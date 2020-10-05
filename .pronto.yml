@@ -1,0 +1,4 @@
+all:
+  exclude:
+  - 'vendor/**/*'
+  - 'config/initializers/simple_form_bootstrap.rb'

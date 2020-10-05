@@ -1,0 +1,11 @@
+default:
+  api_urls:
+    render: 'https://welltravel.atlassian.net/rest/api/1.0/render'
+  encryption_key: <%= ENV['JIRA_ENCRYPTION_KEY'] %>
+
+test:
+  encryption_key: 'efa10f5d529ac91df655138ec6f41e28'
+development:
+  encryption_key: <%= ENV.fetch('JIRA_ENCRYPTION_KEY', '_256_BITS_SECRET_ENCRYPTION_KEY_') %>
+staging:
+production:

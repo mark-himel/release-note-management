@@ -1,0 +1,6 @@
+<div class="simple-form">
+  <div class="container">
+    <h4><%= t('shared.edit_resource', resource: ProjectSetting.model_name.human) %></h4><br/>
+    <%= render 'form', project_setting: @project_setting, project: @project, team: @team  %>
+  </div>
+</div>

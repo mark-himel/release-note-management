@@ -1,0 +1,13 @@
+<%= simple_form_for(project_setting, url: team_project_project_settings_path(team, project)) do |f| %>
+  <%= f.input :git_repo_url %>
+  <%= f.input :git_repo_identifier %>
+  <%= f.input :git_release_branch %>
+  <%= f.input :git_webhook_url %>
+  <%= f.input :jira_username %>
+  <%= f.input :jira_api_token %>
+  <%= f.input :jira_site %>
+  <%= f.input :jira_project_slug %>
+  <%= f.button :submit %>
+<% end %>
+<br>
+<%= link_to I18n.t('back'), team_project_path(team, project), class: 'btn-no-underline' %>

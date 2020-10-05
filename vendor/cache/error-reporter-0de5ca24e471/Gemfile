@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+gemspec
+
+group :development, :test do
+  gem 'pronto'
+  gem 'pronto-brakeman', require: false
+  gem 'pronto-flay', require: false
+  gem 'pronto-rails_best_practices', require: false
+  gem 'pronto-reek', require: false
+  gem 'pronto-rubocop', require: false
+end

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> <%= t('app_title') %> </title>
+  <%= csrf_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body class=<%= "sign-in-page" unless signed_in? %>>
+
+<div class="side-navbar">
+  <%= link_to root_path do %>
+    <div class="icon-round-btn btn-home">
+      <span class="tooltiptext"><%= t('.home') %></span>
+    </div>
+  <% end %>
+  <% if signed_in? %>
+    <%= render 'layouts/nav_buttons' %>
+    <div class="sign-in-up-buttons">
+      <%= link_to sign_out_path, method: :delete do %>
+        <div class="icon-round-btn btn-sign-out">
+          <span class="tooltiptext"><%= t('.sign_out') %></span>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="sign-in-up-buttons">
+      <%= link_to sign_in_path do %>
+        <div class="icon-round-btn table-btn btn-sign-in">
+          <span class="tooltiptext"><%= t('layouts.application.sign_in') %></span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="dashboard">
+  <% flash.each do |key, value| %>
+    <div class="alert">
+      <%= value %>
+    </div>
+  <% end %>
+  <div id="flash-box">
+    <div></div>
+  </div>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+</div>
+</body>
+</html>

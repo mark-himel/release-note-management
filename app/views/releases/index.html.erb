@@ -1,0 +1,29 @@
+<h1><%= t('release.list') %></h1>
+<%= link_to t('back'), team_project_path(@team, @project), class: 'btn-no-underline' %>
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t('release.table.assignee') %></th>
+      <th><%= t('release.table.pull_request') %></th>
+      <th><%= t('release.table.story') %></th>
+      <th><%= t('release.table.status') %></th>
+      <th><%= t('shared.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @releases.each do |release| %>
+      <% user = release.assignee %>
+      <tr>
+        <td><%= github_user_avatar(user.avatar_url, user.github_username) %></td>
+        <td><%= link_to release.pull_request_information, release.pr_reference, target: :_blank %></td>
+        <td><%= link_to release.story_number, release.story_reference, target: :_blank %></td>
+        <td><%= release.state %></td>
+        <td>
+          <% if can? :edit, release %>
+            <%= link_to t('shared.edit'), edit_team_project_release_path(@team, @project, release) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

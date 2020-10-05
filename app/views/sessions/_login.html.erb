@@ -1,0 +1,9 @@
+<%= authorization_modal 'login', 'Login', '', link_css_class: 'modal__button', modal_content_class: 'modal__content'  do %>
+  <%= simple_form_for :session, url: session_path do |f| %>
+    <%= f.input :email %>
+    <%= f.input :password, as: :password %>
+    <div class="text-center">
+      <%= f.button :submit, t('users.login'), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% end %>

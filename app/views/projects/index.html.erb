@@ -1,0 +1,40 @@
+<%= link_to t('back'), team_path(@team), class: 'btn-no-underline' %>
+<h1><%= I18n.t('project.title') %></h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th> <%= Project.human_attribute_name(:name) %> </th>
+    <th> <%= I18n.t('shared.actions') %> </th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td> <%= project.name %> </td>
+        <td>
+          <%= link_to I18n.t('shared.show', resource: Project.model_name.human),
+                      team_project_path(project.team, project) %>
+          <% if can? :edit, project %>
+            <%= link_to I18n.t('shared.edit', resource: Project.model_name.human),
+                        edit_team_project_path(project.team, project) %>
+          <% end %>
+          <% if can? :settings, project %>
+            <%= link_to Project.human_attribute_name(:settings),
+                        edit_team_project_project_settings_path(project.team, project) %>
+          <% end %>
+          <% if can? :destroy, project %>
+            <%= link_to I18n.t('shared.delete', resource: Project.model_name.human),
+                        team_project_path(project.team, project),
+                        method: :delete,
+                        data: { confirm: I18n.t('shared.confirm', resource: Project.model_name.human) } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br/>
+<% if can? :create, Project %>
+  <%= link_to I18n.t('shared.create', resource: Project.model_name.human),
+              new_team_project_path(@team),
+              class: 'btn-no-underline' %>
+<% end %>

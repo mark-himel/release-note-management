@@ -1,0 +1,7 @@
+<div class="simple-form">
+  <div class="container">
+    <h2><%= t('shared.edit_resource', resource: Release.model_name.human) %></h2>
+    <%= link_to t('back'), team_project_releases_path(@team, @project), class: 'btn-no-underline' %>
+    <%= render 'form', project: @project, team: @team, release: @release %>
+  </div>
+</div>

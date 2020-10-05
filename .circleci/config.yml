@@ -1,0 +1,95 @@
+version: 2
+jobs:
+  test:
+    parallelism: 2
+    working_directory: ~/app
+    docker:
+      - image: circleci/ruby:2.6.0-node-browsers
+        environment:
+          RAILS_ENV: test
+          DATABASE_URL: postgresql://ubuntu@localhost/circle_test?sslmode=disable
+      - image: postgres:9.6.2
+        environment:
+          POSTGRES_USER: ubuntu
+          POSTGRES_DB: circle_test
+          POSTGRES_PASSWORD: ""
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-ruby-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: gem install bundler
+      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=$(nproc) --retry=3
+      - run: mv config/database.ci.yml config/database.yml
+      - run: cp .env.example .env
+      - run: bundle exec rake db:create db:schema:load --trace
+      - save_cache:
+          key: v1-ruby-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: Tests
+          command: |
+            bundle exec rspec --profile 10 \
+                              --out /tmp/test-results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      - store_test_results:
+          path: /tmp/test-results
+
+  pronto:
+      working_directory: ~/app
+      docker:
+        - image: circleci/ruby:2.6.0-node-browsers
+      steps:
+        - restore_cache:
+            key: v4-pronto-dependencies
+        - checkout
+        - run:
+            name: Install cmake
+            command:
+               sudo apt-get update && sudo apt-get install cmake
+        - run:
+            name: Configure Bundler
+            command: |
+               echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+               source $BASH_ENV
+               gem install bundler
+        - run:
+            name: Install Pronto
+            command: |-
+               rm Gemfile.lock
+               cat <<-EOF > Gemfile
+               source 'https://rubygems.org'
+
+               gem 'pronto', '~> 0.9.5'
+               gem 'pronto-brakeman'
+               gem 'pronto-flay'
+               gem 'pronto-rubocop'
+               gem 'pronto-rails_best_practices'
+               gem 'pronto-rails_schema'
+               gem 'pronto-reek'
+               gem 'pronto-scss'
+               EOF
+               bundle install --path pronto-bundle --no-cache
+        - save_cache:
+            key: v5-pronto-dependencies
+            paths:
+              - pronto-bundle
+        - run:
+            name: Unshallow git repo
+            command: "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
+        - run:
+            name: Run Pronto if needed
+            command: |-
+              if [ -z "${CI_PULL_REQUEST}" ]; then
+                echo "No pull request detected, skipping."
+                exit 0
+              fi
+              PRONTO_GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN PRONTO_PULL_REQUEST_ID=$(echo $CI_PULL_REQUEST | grep -o -E '[0-9]+$') bundle exec pronto run -f github_status github_pr -c origin/master
+
+workflows:
+  version: 2
+  test_and_pronto:
+    jobs:
+      - test
+      - pronto

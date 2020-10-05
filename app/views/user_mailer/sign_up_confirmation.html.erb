@@ -1,0 +1,3 @@
+<p><%= t('users.mailer.sign_up_confirmation.opening') %></p>
+<p><%= link_to t('users.mailer.sign_up_confirmation.link_text'), confirm_email_url(token: @user.email_confirmation_token) %></p>
+<p><%= t('users.mailer.sign_up_confirmation.closing') %></p>

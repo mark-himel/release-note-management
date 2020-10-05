@@ -1,0 +1,62 @@
+---
+en:
+  app_title: Release Note Management
+  back: "<<< Back"
+  brand: Release Note Application
+  dashboard: Dashboard
+  flashes:
+    confirm_your_email: Please confirm your email
+    confirmed_email: Your email has been confirmed
+    failure_after_create: Invalid Email or Password
+  github:
+    login: Login with Github
+    unauthorize_access: 'Unauthorized: Access Denied'
+  layouts:
+    application:
+      home: Home
+      sign_in: Sign In
+      sign_out: Sign Out
+  project:
+    title: Project List
+  release:
+    list: Releases
+    table:
+      assignee: Assignee
+      pull_request: Pull Request
+      status: Status
+      story: Story
+  shared:
+    actions: Actions
+    add: Add a new %{resource}
+    confirm: Do you really want to delete %{resource} ?
+    create: Create new %{resource}
+    created: "%{resource} has been created successfully"
+    delete: Delete
+    deleted: "%{resource} has been deleted successfully"
+    edit: Edit
+    edit_resource: Edit %{resource} Information
+    not_created: "%{resource} has not been created successfully"
+    not_found: Could not find %{resource}!
+    not_updated: "%{resource} has not been updated successfully"
+    show: Show
+    show_resource: Show Selected %{resource}
+    updated: "%{resource} has been updated successfully"
+  team:
+    list: Teams
+    projects: Projects
+  title:
+    edit: Edit %{resource}
+    index: List of all %{resource}s
+    show: "%{resource} Details"
+  users:
+    created: User profile of %{user_name} has been created
+    login: Login
+    mailer:
+      sign_up_confirmation:
+        closing: If you didn't request this, ignore this email.
+        link_text: Confirm Sign Up !
+        opening: Someone, hopefully you, requested for sign up and the following link will confirm your email
+      subject:
+        confirm_email: A Confirmation link has been sent to your email address. Please check and confirm your email within next 72 hours to activate your account!
+        mail_subject: Registration Confirmation
+    register: Register

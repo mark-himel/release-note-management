@@ -1,0 +1,14 @@
+<div class="sign-in">
+  <div class="container">
+    <div class="login-wrapper">
+      <h3 class="login-brand"> <%= t('brand') %></h3>
+      <div class="login">
+        <%= link_to omniauth_path(:github), method: :post, class: 'action github' do %>
+          <%= image_tag image_url('github.png') %><%= t('github.login') %>
+        <% end %>
+        <br />
+        <%= render 'sessions/login' %> | <%= render 'sessions/register' %>
+      </div>
+    </div>
+  </div>
+</div>

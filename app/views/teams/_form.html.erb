@@ -1,0 +1,7 @@
+<%= link_to t('back'), teams_path, class: 'btn-no-underline' %><br/><br/>
+<%= simple_form_for team do |team| %>
+  <%= team.input :name %> <br/>
+  <%= team.input :github_organization %> <br/>
+  <%= team.button :submit %> <br/>
+<% end %>
+<br/>

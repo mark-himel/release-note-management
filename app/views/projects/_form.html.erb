@@ -1,0 +1,7 @@
+<%= simple_form_for project, url: url do |project| %>
+  <%= project.input :name %>
+  <%= project.association :team %>
+  <%= project.button :submit %>
+<% end %>
+<br/>
+<%= link_to I18n.t('back'), team_projects_path(team), class: 'btn-no-underline' %>

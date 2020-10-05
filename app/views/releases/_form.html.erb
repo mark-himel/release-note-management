@@ -1,0 +1,4 @@
+<%= simple_form_for release, url: team_project_release_path(team, project) do |release| %>
+  <%= release.input :description, as: :trix_editor %>
+  <%= release.button :submit %>
+<% end %>

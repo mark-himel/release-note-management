@@ -1,0 +1,31 @@
+<h1 class="title"> <%= t('title.index', resource: Team.model_name.human) %> </h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th> <%= Team.human_attribute_name(:name) %> </th>
+    <th> <%= Team.human_attribute_name(:github_organization) %> </th>
+    <th> <%= Team.human_attribute_name(:actions) %> </th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td> <%= team.name %> </td>
+        <td> <%= team.github_organization %> </td>
+        <td>
+          <%= link_to t('shared.show'), team_path(team) %>
+          <% if can? :edit, team %>
+            <%= link_to t('shared.edit'), edit_team_path(team) %>
+          <% end %>
+          <% if can? :destroy, team %>
+            <%= link_to t('shared.delete'), team, method: :delete, data: {confirm: t('shared.confirm', resource: Team.model_name.human)} %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<% if can? :create, Team %>
+  <%= link_to t('shared.add', resource: Team.model_name.human), new_team_path, class: 'btn-no-underline' %>
+<% end %>

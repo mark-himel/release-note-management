@@ -1,0 +1,23 @@
+<h2 class="title"> <%= I18n.t('title.show', resource: Team.model_name.human) %> </h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th> <%= Team.human_attribute_name(:name) %> </th>
+      <th> <%= Team.human_attribute_name(:github_organization) %> </th>
+      <th> <%= Team.human_attribute_name(:actions) %> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <%= @team.name %> <br/><br/> </td>
+      <td> <%= @team.github_organization %><br/><br/></td>
+      <td> <%= link_to I18n.t('team.projects'), team_projects_path(@team) %> <br/><br/> </td>
+    </tr>
+  </tbody>
+</table>
+<br/>
+<% if can? :edit, @team %>
+  <%= link_to I18n.t('shared.edit', resource: Team.model_name.human),
+              edit_team_path(@team),
+              class: 'btn-no-underline' %>
+<% end %>

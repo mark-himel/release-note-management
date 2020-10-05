@@ -1,0 +1,13 @@
+default:
+  host: <%= ENV['MAILER_HOST'] %>
+  protocol: <%= ENV['MAILER_PROTOCOL'] %>
+  sender: 'mark.mondol@welldev.io'
+
+development:
+  host: 'localhost:3020'
+  sender: 'mark.mondol@welldev.io'
+
+test:
+  host: 'localhost:3020'
+staging:
+production:

@@ -1,0 +1,10 @@
+dependencies:
+  pre:
+    - gem install bundler
+  post:
+    - export PULL_REQUEST_ID=$(echo $CI_PULL_REQUEST | grep -o -E '[0-9]+$')
+test:
+  pre:
+    - "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
+  post:
+    - "[[ ! -z \"${CI_PULL_REQUEST}\" ]] && bundle exec pronto run -f github_status github_pr -c origin/master || true"

@@ -1,0 +1,6 @@
+<div class="simple-form">
+  <div class="container">
+    <h2 class="title"><%= I18n.t('shared.create', resource: Project.model_name.human) %></h2>
+    <%= render 'form', url: team_projects_path, project: @project, team: @team %>
+  </div>
+</div>

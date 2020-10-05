@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'error/reporter'
+
+require 'irb'
+IRB.start

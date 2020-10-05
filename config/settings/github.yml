@@ -1,0 +1,29 @@
+default:
+  client_id: <%= ENV.fetch('GITHUB_CLIENT_ID', '') %>
+  client_secret: <%= ENV.fetch('GITHUB_CLIENT_SECRET', '') %>
+  api_url: <%= ENV['GITHUB_API_URL'] %>
+  web_url: <%= ENV['GITHUB_WEB_URL'] %>
+  access_token: <%= ENV['GITHUB_ACCESS_TOKEN'] %>
+  organization: <%= ENV['GITHUB_ORGANIZATION'] %>
+  admin_team: <%= ENV['GITHUB_ADMIN_TEAM'] %>
+  deploy_team: <%= ENV['GITHUB_DEPLOY_TEAM'] %>
+  webhook:
+    username: <%= ENV['GITHUB_WEBHOOK_USERNAME'] %>
+    password: <%= ENV['GITHUB_WEBHOOK_PASSWORD'] %>
+    secret: <%= ENV['GITHUB_WEBHOOK_SECRET'] %>
+
+test:
+  api_url: <%= ENV.fetch('GITHUB_API_URL', '') %>
+  web_url: <%= ENV.fetch('GITHUB_WEB_URL', '') %>
+  organization: 'wtag'
+  admin_team: 'Operations'
+  deploy_team: 'Developers'
+  webhook:
+    username: 'mark'
+    password: '1234'
+    secret: 'secret'
+development:
+  api_url: <%= ENV.fetch('GITHUB_API_URL', '') %>
+  web_url: <%= ENV.fetch('GITHUB_WEB_URL', '') %>
+staging:
+production:

@@ -1,0 +1,20 @@
+<h2><%= t('shared.show_resource', resource: Project.model_name.human) %></h2>
+<%= link_to t('back'),
+            team_projects_path(@team),
+            class: 'btn-no-underline' %>
+<table class="table">
+  <thead>
+  <tr>
+    <th><%= Project.human_attribute_name(:name) %></th>
+    <th><%= Project.human_attribute_name(:team_id) %></th>
+    <th><%= t('release.list') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @project.name %></td>
+    <td><%= @project.team.name %></td>
+    <td><%= link_to t('release.list'), team_project_releases_path(@team, @project) %></td>
+  </tr>
+  </tbody>
+</table>

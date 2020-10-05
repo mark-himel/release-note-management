@@ -1,0 +1,152 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/orgs/wtag/teams
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token $GithubAccessToken$
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 17 Jul 2019 09:16:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1563358605'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      Etag:
+      - W/"b0b05669977b552b01a68936b8a797f0"
+      X-Oauth-Scopes:
+      - admin:gpg_key, admin:org, admin:org_hook, admin:public_key, admin:repo_hook,
+        gist, notifications, read:packages, repo, user, write:discussion, write:packages
+      X-Accepted-Oauth-Scopes:
+      - admin:org, read:org, repo, user, write:org
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - E430:763D:694C9E:7EE508:5D2EE77C
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"name":"Developers","id":1395755,"node_id":"MDQ6VGVhbTEzOTU3NTU=","slug":"developers","description":"","privacy":"secret","url":"https://api.github.com/teams/1395755","html_url":"https://github.com/orgs/wtag/teams/developers","members_url":"https://api.github.com/teams/1395755/members{/member}","repositories_url":"https://api.github.com/teams/1395755/repos","permission":"pull"},{"name":"Operations","id":2738747,"node_id":"MDQ6VGVhbTI3Mzg3NDc=","slug":"operations","description":"The
+        operations team of Welltravel","privacy":"closed","url":"https://api.github.com/teams/2738747","html_url":"https://github.com/orgs/wtag/teams/operations","members_url":"https://api.github.com/teams/2738747/members{/member}","repositories_url":"https://api.github.com/teams/2738747/repos","permission":"pull"},{"name":"PCI-DSS","id":3321399,"node_id":"MDQ6VGVhbTMzMjEzOTk=","slug":"pci-dss","description":"The
+        PCI-DSS team responsible for our credit card data","privacy":"closed","url":"https://api.github.com/teams/3321399","html_url":"https://github.com/orgs/wtag/teams/pci-dss","members_url":"https://api.github.com/teams/3321399/members{/member}","repositories_url":"https://api.github.com/teams/3321399/repos","permission":"pull"}]'
+    http_version: 
+  recorded_at: Wed, 17 Jul 2019 09:16:45 GMT
+- request:
+    method: get
+    uri: https://api.github.com/orgs/wtag/members/mmo-wtag
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token $GithubAccessToken$
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Wed, 17 Jul 2019 09:16:47 GMT
+      Content-Type:
+      - application/octet-stream
+      Server:
+      - GitHub.com
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4998'
+      X-Ratelimit-Reset:
+      - '1563358605'
+      X-Oauth-Scopes:
+      - admin:gpg_key, admin:org, admin:org_hook, admin:public_key, admin:repo_hook,
+        gist, notifications, read:packages, repo, user, write:discussion, write:packages
+      X-Accepted-Oauth-Scopes:
+      - read:org, repo, user
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      Vary:
+      - Accept-Encoding
+      X-Github-Request-Id:
+      - E436:6510:371454:431A4F:5D2EE77E
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 17 Jul 2019 09:16:47 GMT
+recorded_with: VCR 5.0.0

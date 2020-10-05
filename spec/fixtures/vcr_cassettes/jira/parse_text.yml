@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "$JiraRestApiUrl$"
+    body:
+      encoding: UTF-8
+      string: '{"rendererType":"atlassian-wiki-renderer","unrenderedMarkup":"*Hello
+        World*"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.6.0p0
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '77'
+      Host:
+      - welltravel.atlassian.net
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - AtlassianProxy/1.15.8.1
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - no-cache, no-store, no-transform
+      Content-Type:
+      - text/html;charset=UTF-8
+      Content-Encoding:
+      - gzip
+      Strict-Transport-Security:
+      - max-age=315360000; includeSubDomains; preload
+      Date:
+      - Mon, 05 Aug 2019 07:58:03 GMT
+      Atl-Traceid:
+      - d32e6488f269b995
+      X-Arequestid:
+      - 9d6a1a07-c608-49a4-8d1e-f4cce800039f
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Timing-Allow-Origin:
+      - "*"
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - atlassian.xsrf.token=B9XN-CVU3-8H3T-3PHW_854b33badc4ee74cc4c5c5c6f77cbfae2142b916_lout;
+        Path=/; Secure
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7IpsLNJsvNIzcnJVwjPL8pJsdFPsrPRL7ADAAAA//8DAGSVmU4ZAAAA
+    http_version: 
+  recorded_at: Mon, 05 Aug 2019 07:58:02 GMT
+recorded_with: VCR 5.0.0

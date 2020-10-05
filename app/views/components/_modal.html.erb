@@ -1,0 +1,23 @@
+<div class="modal <%= modal_css_class %>">
+  <label class="modal__link <%= link_css_class %>" for="<%= modal_id %>"><%= link_text %></label>
+
+  <input class="modal__state" type="checkbox" id="<%= modal_id %>" <%= open ? 'checked="checked"' : '' %> />
+
+  <label for="<%= modal_id %>" class="modal__background"></label>
+
+  <div class="modal__content <%= modal_content_class ? modal_content_class : '' %>">
+    <label class="<%= close_css_class %>" for="<%= modal_id %>"></label>
+
+    <div class="modal__header">
+      <div class="modal__title-text"><%= title %></div>
+    </div>
+
+    <% if intro.present? %>
+      <div class="modal__intro"><%= intro %></div>
+    <% end %>
+
+    <div class="modal__body">
+      <%= yield %>
+    </div>
+  </div>
+</div>
